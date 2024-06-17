@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSelector2"
+        app:layout_constraintStart_toStartOf="@+id/spinnerSelector2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSelector2" />
+
+    <Spinner
+        android:id="@+id/spinnerSelector"
+        android:layout_width="117dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:entries="@array/dates"
+        app:layout_constraintEnd_toEndOf="@+id/seasonTextView"
+        app:layout_constraintStart_toStartOf="@+id/seasonTextView"
+        app:layout_constraintTop_toBottomOf="@+id/seasonTextView" />
+
+    <Spinner
+        android:id="@+id/spinnerSelector2"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:entries="@array/selectorType"
+        app:layout_constraintEnd_toEndOf="@+id/typeTextView"
+        app:layout_constraintStart_toStartOf="@+id/typeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/typeTextView" />
+
+    <TextView
+        android:id="@+id/seasonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:text="Season"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/typeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Type"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSelector"
+        app:layout_constraintStart_toStartOf="@+id/spinnerSelector"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSelector" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/spinnerSelector2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
