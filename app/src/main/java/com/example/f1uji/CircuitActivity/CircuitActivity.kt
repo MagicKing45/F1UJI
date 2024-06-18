@@ -32,7 +32,11 @@ class CircuitActivity : AppCompatActivity(), CircuitInterface{
     override fun showCircuitData(circuit: Circuit) {
         circuit.let {
             with(binding){
-
+                CircuitName.text = circuit.circuitName
+                CountryText.text = "Country: \n"+circuit.Location?.country
+                LocalityText.text = "Locality: \n"+circuit.Location?.locality
+                LatitudText.text = "Latitude: \n"+ circuit.Location?.lat.toString()
+                LongitudText.text = "Longitude: \n"+ circuit.Location?.long.toString()
             }
         }
     }
