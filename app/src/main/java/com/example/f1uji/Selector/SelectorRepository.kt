@@ -50,4 +50,21 @@ object SelectorRepository {
         println(e)
         Result.failure(e)
     }
+    suspend fun getDeepDriver(id: String) = try {
+        withContext(Dispatchers.IO) {
+            val deepDriverResponse = API.getDeepDriver(id)
+            with(deepDriverResponse) {
+                var standings = deepDriverResponse.MRData.StandingsTable.StandingsLists
+                val data = mutableListOf<Pair<String,String>>()
+                for(year in standings)
+                {
+                    data.add(Pair(year.season,year.DriverStandings[0].position))
+                }
+                Result.success(data)
+            }
+        }
+    } catch (e: Exception) {
+        println(e)
+        Result.failure(e)
+    }
 }

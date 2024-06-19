@@ -2,6 +2,7 @@ package com.example.f1uji.DriverActivity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.f1uji.Common.AdvancedDriver
 import com.example.f1uji.Common.Driver
 import com.example.f1uji.DriverActivity.DriverInterface
 import com.example.f1uji.Selector.SelectorRepository
@@ -20,6 +21,7 @@ class DriverViewModel : ViewModel() {
             if (value != null)
                 displayDriver(value)
         }
+    var deepDriver = mutableListOf<Pair<String,String>>()
 
     private fun updateView() = view?.apply {
 
@@ -29,9 +31,17 @@ class DriverViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.Main) {
             SelectorRepository.getDriver(driverID)
                 .onSuccess { driver = it }
-            //.onFailure { view?.showSearchError(it)
+            .onFailure { view?.showSearchError(it)}
         }
     }
+    fun onDeepSearch(driverID: String) {
+        viewModelScope.launch(Dispatchers.Main) {
+            SelectorRepository.getDeepDriver(driverID)
+                .onSuccess { deepDriver = it }
+            .onFailure { view?.showSearchError(it)}
+        }
+    }
+
     private fun displayDriver(driver: Driver) = view ?. apply {
         showDriverData(driver)
     }

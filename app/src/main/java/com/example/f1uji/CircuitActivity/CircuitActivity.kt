@@ -1,6 +1,7 @@
 package com.example.f1uji.CircuitActivity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.f1uji.Common.Circuit
@@ -39,5 +40,8 @@ class CircuitActivity : AppCompatActivity(), CircuitInterface{
                 LongitudText.text = "Longitude: \n"+ circuit.Location?.long.toString()
             }
         }
+    }
+    override fun showSearchError(error: Throwable) {
+        Toast.makeText(this, error.message ?: "Unknown error", Toast.LENGTH_LONG).show()
     }
 }

@@ -12,6 +12,7 @@ object API {
     val circuitsMap = mutableMapOf<String, CircuitsResponse>()
     val driverMap = mutableMapOf<String, DriversResponse>()
     val circuitMap = mutableMapOf<String, CircuitsResponse>()
+    val deepDriverMap = mutableMapOf<String, DeepDriverResponse>()
 
     init {
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
@@ -56,6 +57,17 @@ object API {
             val circuit = apiInterface.getCircuit(id)
             circuitMap[id] = circuit
             return circuit
+        }
+    }
+    suspend fun getDeepDriver(@Path("id") id: String): DeepDriverResponse {
+        if (deepDriverMap[id] != null)
+            return deepDriverMap[id]!!
+        else {
+            val deepDriver = apiInterface.getDeepDriver(id)
+            println(deepDriver.MRData.StandingsTable.StandingsLists[0].DriverStandings[0])
+            deepDriverMap[id] = deepDriver
+            println(deepDriver.toString())
+            return deepDriver
         }
     }
 }

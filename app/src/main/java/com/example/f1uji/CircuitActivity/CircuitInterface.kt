@@ -4,4 +4,5 @@ import com.example.f1uji.Common.Circuit
 
 interface CircuitInterface {
     fun showCircuitData(circuit: Circuit)
+    fun showSearchError(error: Throwable)
 }

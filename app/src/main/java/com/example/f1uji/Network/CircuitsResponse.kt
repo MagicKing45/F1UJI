@@ -1,7 +1,6 @@
 package com.example.f1uji.Network
 
 import com.example.f1uji.Common.Circuit
-import com.squareup.moshi.Json
 
 class CircuitsResponse (
     val MRData : DataCircuit

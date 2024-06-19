@@ -28,7 +28,7 @@ class CircuitViewModel :ViewModel(){
         viewModelScope.launch(Dispatchers.Main) {
             SelectorRepository.getCircuit(circuitID)
                 .onSuccess { circuit = it }
-            //.onFailure { view?.showSearchError(it)
+            .onFailure { view?.showSearchError(it)}
         }
     }
     private fun displayCircuit(circuit: Circuit) = view ?. apply {

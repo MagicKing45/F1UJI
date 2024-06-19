@@ -17,4 +17,7 @@ interface APIInterface {
 
     @GET("circuits/{id}.json")
     suspend fun getCircuit(@Path("id") name: String): CircuitsResponse
+
+    @GET("drivers/{id}/driverStandings.json")
+    suspend fun getDeepDriver(@Path("id") name: String): DeepDriverResponse
 }
